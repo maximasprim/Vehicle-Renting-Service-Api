@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS "authentication" (
 	"auth_id" serial PRIMARY KEY NOT NULL,
 	"user_id" integer,
 	"password" varchar(256) NOT NULL,
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "bookings" (
@@ -17,12 +17,12 @@ CREATE TABLE IF NOT EXISTS "bookings" (
 	"user_id" integer,
 	"vehicle_id" integer,
 	"location_id" integer,
-	"booking_date" timestamp NOT NULL,
-	"return_date" timestamp NOT NULL,
+	"booking_date" varchar(50) NOT NULL,
+	"return_date" varchar(50) NOT NULL,
 	"total_amount" varchar(10) NOT NULL,
 	"booking_status" varchar(256) DEFAULT 'Pending',
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "customer_support_tickets" (
@@ -31,20 +31,20 @@ CREATE TABLE IF NOT EXISTS "customer_support_tickets" (
 	"subject" varchar(256) NOT NULL,
 	"description" varchar(256) NOT NULL,
 	"status" varchar(256) DEFAULT 'Open',
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "fleet_management" (
 	"fleet_id" serial PRIMARY KEY NOT NULL,
 	"vehicle_id" integer,
-	"acquisition_date" timestamp NOT NULL,
+	"acquisition_date" varchar(50) NOT NULL,
 	"depreciation_rate" varchar(256) NOT NULL,
 	"current_value" varchar(256) NOT NULL,
 	"maintenance_cost" varchar(256),
 	"status" varchar(256),
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "locations" (
@@ -52,8 +52,8 @@ CREATE TABLE IF NOT EXISTS "locations" (
 	"name" varchar(256) NOT NULL,
 	"address" varchar(256) NOT NULL,
 	"contact_phone" varchar(20),
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "payments" (
@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS "payments" (
 	"booking_id" integer,
 	"amount" varchar(256) NOT NULL,
 	"payment_status" varchar(256) DEFAULT 'Pending',
-	"payment_date" timestamp NOT NULL,
+	"payment_date" varchar(50) NOT NULL,
 	"payment_method" varchar(256),
 	"transaction_id" varchar(256),
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "users" (
@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"contact_phone" varchar(20),
 	"address" varchar(256),
 	"role" "role" DEFAULT 'user',
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now(),
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL,
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
@@ -98,8 +98,8 @@ CREATE TABLE IF NOT EXISTS "vehicles" (
 	"vehicle_id" serial PRIMARY KEY NOT NULL,
 	"rental_rate" varchar(10) NOT NULL,
 	"availability" boolean DEFAULT true,
-	"created_at" timestamp DEFAULT now(),
-	"updated_at" timestamp DEFAULT now()
+	"created_at" varchar(50) NOT NULL,
+	"updated_at" varchar(50) NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN

@@ -20,8 +20,8 @@ export const usersTable = pgTable("users", {
   contact_phone: varchar("contact_phone", { length: 20 }),
   address: varchar("address", { length: 256 }),
   role: roleEnum("role").default("user"),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Vehicles Table
@@ -30,8 +30,8 @@ export const vehiclesTable = pgTable("vehicles", {
   // vehicleSpec_id: integer("vehicleSpec_id").references(() => vehicleSpecificationsTable.vehicleSpec_id),
   rental_rate: varchar("rental_rate", { length: 10 }).notNull(),
   availability: boolean("availability").default(true),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Vehicle Specifications Table
@@ -55,12 +55,12 @@ export const bookingsTable = pgTable("bookings", {
   user_id: integer("user_id").references(() => usersTable.user_id),
   vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id),
   location_id: integer("location_id").references(() => locationsTable.location_id),
-  booking_date: timestamp("booking_date").notNull(),
-  return_date: timestamp("return_date").notNull(),
+  booking_date: varchar("booking_date", { length: 50 }).notNull(),
+  return_date: varchar("return_date", { length: 50 }).notNull(),
   total_amount: varchar("total_amount", { length: 10 }).notNull(),
   booking_status: varchar("booking_status", { length: 256 }).default("Pending"),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Payments Table
@@ -69,11 +69,11 @@ export const paymentsTable = pgTable("payments", {
   booking_id: integer("booking_id").references(() => bookingsTable.booking_id),
   amount: varchar("amount", { length: 256 }).notNull(),
   payment_status: varchar("payment_status", { length: 256 }).default("Pending"),
-  payment_date: timestamp("payment_date").notNull(),
+  payment_date: varchar("payment_date", { length: 50 }).notNull(),
   payment_method: varchar("payment_method", { length: 256 }),
   transaction_id: varchar("transaction_id", { length: 256 }),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Authentication Table
@@ -81,8 +81,8 @@ export const authenticationTable = pgTable("authentication", {
   auth_id: serial("auth_id").primaryKey(),
   user_id: integer("user_id").references(() => usersTable.user_id),
   password: varchar("password", { length: 256 }).notNull(),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Customer Support Tickets Table
@@ -92,8 +92,8 @@ export const customerSupportTicketsTable = pgTable("customer_support_tickets", {
   subject: varchar("subject", { length: 256 }).notNull(),
   description: varchar("description", { length: 256 }).notNull(),
   status: varchar("status", { length: 256 }).default("Open"),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Locations Table
@@ -102,21 +102,21 @@ export const locationsTable = pgTable("locations", {
   name: varchar("name", { length: 256 }).notNull(),
   address: varchar("address", { length: 256 }).notNull(),
   contact_phone: varchar("contact_phone", { length: 20 }),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Fleet Management Table
 export const fleetManagementTable = pgTable("fleet_management", {
   fleet_id: serial("fleet_id").primaryKey(),
   vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id),
-  acquisition_date: timestamp("acquisition_date").notNull(),
+  acquisition_date: varchar("acquisition_date", { length: 50 }).notNull(),
   depreciation_rate: varchar("depreciation_rate", { length: 256 }).notNull(),
   current_value: varchar("current_value", { length: 256 }).notNull(),
   maintenance_cost: varchar("maintenance_cost", { length: 256 }),
   status: varchar("status", { length: 256 }),
-  created_at: timestamp("created_at").defaultNow(),
-  updated_at: timestamp("updated_at").defaultNow(),
+  created_at: varchar("created_at",{ length: 50 }).notNull(),
+  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
 });
 
 // Relations

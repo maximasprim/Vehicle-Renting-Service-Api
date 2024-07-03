@@ -14,7 +14,9 @@ Content-Type: application/json
   "email": "janedoe@gmail.com",
   "contact_phone": "1234567890",
   "address": "1234 Main St, City, State, 12345",
-  "role": "user"
+  "role": "user",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
 }
 ###
 PUT http://localhost:3000/users/1
@@ -39,7 +41,9 @@ Content-Type: application/json
 {
     
   "rental_rate": 100,
-  "availability": "false"
+  "availability": "false",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
   
 }
 ###
@@ -97,12 +101,127 @@ POST http://localhost:3000/bookings
 Content-Type: application/json
 
 {
-  "booking_id": 2,
-  "user_id": 1,
-  "vehicle_id": 1,
+  "booking_id": 5,
+  "user_id": 5,
+  "vehicle_id": 7,
   "location_id": "1",
-  "booking_date": 2021-09-01,
-  "return_date": 2021-09-10,
-  "total_cost": 1000,
-  "booking_status": "pending"
+  "booking_date": "2021-09-01",
+  "return_date": "2021-09-10",
+  "total_amount": 1000,
+  "booking_status": "pending",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
+}
+
+###
+PUT http://localhost:3000/bookings/2
+Content-Type: application/json
+
+{
+  "booking_status": "approved"
+}
+
+###
+DELETE http://localhost:3000/bookings/5
+
+//payments queries
+###
+GET http://localhost:3000/payments
+###
+GET http://localhost:3000/payments/1
+###
+POST http://localhost:3000/payments
+Content-Type: application/json
+
+{
+  "payment_id": 5,
+  "booking_id": 5,
+  "payment_date": "2021-09-01",
+  "amount": 1000,
+  "payment_status": "pending",
+  "payment_method": "credit card",
+  "transaction_id": "1234567890",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
+}
+
+###
+PUT http://localhost:3000/payments/2
+Content-Type: application/json
+
+{
+  "payment_status": "approved"
+}
+###
+DELETE http://localhost:3000/payments/5
+
+//Customer support tickets queries
+###
+GET http://localhost:3000/ticket
+###
+GET http://localhost:3000/ticket/1
+###
+POST http://localhost:3000/ticket
+Content-Type: application/json
+
+{
+  "ticket_id": 5,
+  "user_id": 5,
+  "subject": "Booking issue",
+  "description": "I have a problem with my booking",
+  "status": "pending",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
+}
+###
+PUT http://localhost:3000/ticket/5
+Content-Type: application/json
+
+{
+  "status": "resolved"
+}
+###
+DELETE http://localhost:3000/ticket/5
+
+//Locations queries
+###
+GET http://localhost:3000/location
+###
+GET http://localhost:3000/location/1
+###
+POST http://localhost:3000/location
+Content-Type: application/json
+
+{
+  "location_id": 5,
+  "name": "Nairobi",
+  "address": "1234 Main St, City, State, 12345",
+  "contact_phone": "1234567890",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
+}
+###
+PUT http://localhost:3000/location/2
+###
+DELETE http://localhost:3000/location/5
+
+//fleetMagement queries
+###
+GET http://localhost:3000/fleetManagement
+###
+GET http://localhost:3000/fleetManagement/1
+###
+post http://localhost:3000/fleetManagement
+Content-Type: application/json
+
+{
+  "fleet_id": 5,
+  "vehicle_id": 5,
+  "acquisition_date": "2021-09-01",
+  "depreciation_rate": 0.1,
+  "current_value": 10000,
+  "maintenance_status": "good",
+  "status": "active",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
 }

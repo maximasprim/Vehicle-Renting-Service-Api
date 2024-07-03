@@ -7,6 +7,10 @@ import { userRouter } from './Users/user.router';
 import { vehicleRouter } from './Vehicles/vehicles.router';
 import { vehicleSpecificationRouter } from './Vehicles Specification/vehiclesSpecification.router';
 import { bookingsRouter } from './Bookings/Bookings.router';
+import { paymentsRouter } from './Payments/payments.router';
+import { ticketRouter } from './Customer support Tickets/customer.router';
+import { locationRouter } from './Location and branches/location.router';
+import { fleetManagementRouter } from './Fleet Management/fleet.router';
 
 const app = new Hono()
 
@@ -26,3 +30,7 @@ app.route('/', userRouter)//users
 app.route('/', vehicleRouter)
 app.route('/', vehicleSpecificationRouter)  
 app.route('/', bookingsRouter)
+app.route('/', paymentsRouter)
+app.route('/', ticketRouter)
+app.route('/', locationRouter)
+app.route('/', fleetManagementRouter)

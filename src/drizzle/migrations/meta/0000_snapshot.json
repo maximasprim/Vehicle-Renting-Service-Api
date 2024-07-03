@@ -1,5 +1,5 @@
 {
-  "id": "d2bee44b-ebc3-416e-9649-4f202228ddd4",
+  "id": "229ec1b7-5895-4cd2-aeec-cad531f63ff0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -28,17 +28,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -90,13 +88,13 @@
         },
         "booking_date": {
           "name": "booking_date",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": true
         },
         "return_date": {
           "name": "return_date",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": true
         },
@@ -115,17 +113,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -210,17 +206,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -260,7 +254,7 @@
         },
         "acquisition_date": {
           "name": "acquisition_date",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": true
         },
@@ -290,17 +284,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -352,17 +344,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -401,7 +391,7 @@
         },
         "payment_date": {
           "name": "payment_date",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
           "notNull": true
         },
@@ -419,17 +409,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -495,17 +483,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -636,17 +622,15 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         },
         "updated_at": {
           "name": "updated_at",
-          "type": "timestamp",
+          "type": "varchar(50)",
           "primaryKey": false,
-          "notNull": false,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
