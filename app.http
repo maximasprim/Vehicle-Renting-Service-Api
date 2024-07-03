@@ -1,0 +1,108 @@
+###
+GET http://localhost:3000
+###
+GET http://localhost:3000/users
+###
+GET http://localhost:3000/users/1
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    
+  "full_name": "Jane Doe",
+  "email": "janedoe@gmail.com",
+  "contact_phone": "1234567890",
+  "address": "1234 Main St, City, State, 12345",
+  "role": "user"
+}
+###
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+    
+  "email": "John Doe@gmail"
+}
+###
+DELETE http://localhost:3000/users/5
+
+//vehicles queries
+###
+GET http://localhost:3000/vehicles
+###
+GET http://localhost:3000/vehicles/1
+###
+POST http://localhost:3000/vehicles
+Content-Type: application/json
+
+{
+    
+  "rental_rate": 100,
+  "availability": "false"
+  
+}
+###
+PUT http://localhost:3000/vehicles/2
+Content-Type: application/json
+
+{
+    
+  "availability": "true"
+}
+###
+DELETE http://localhost:3000/vehicles/5
+
+//vehicles specifications queries
+
+###
+GET http://localhost:3000/vehiclesSpecifications
+###
+GET http://localhost:3000/vehiclesSpecifications/1
+###
+POST http://localhost:3000/vehiclesSpecifications
+Content-Type: application/json
+
+{
+  "vehicleSpec_id": 2,
+  "vehicle_id": 1,
+  "manufacturer": "Toyota",
+  "model": "crown",
+  "year": 2017,
+  "fuel_type": "diesel",
+  "engine_capacity": "3l",
+  "transmission": "manual",
+  "seating_capacity": 5,
+  "color": "blue",
+  "features": "salon"
+}
+###
+PUT http://localhost:3000/vehiclesSpecifications/2
+Content-Type: application/json
+
+{
+  "color": "red"
+}
+
+###
+DELETE http://localhost:3000/vehiclesSpecifications/5
+
+//Bookings queries
+###
+GET http://localhost:3000/bookings
+###
+GET http://localhost:3000/bookings/1
+###
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+  "booking_id": 2,
+  "user_id": 1,
+  "vehicle_id": 1,
+  "location_id": "1",
+  "booking_date": 2021-09-01,
+  "return_date": 2021-09-10,
+  "total_cost": 1000,
+  "booking_status": "pending"
+}
