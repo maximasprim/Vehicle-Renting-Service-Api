@@ -167,7 +167,7 @@ DELETE http://localhost:3000/bookings/5
 GET http://localhost:3000/payments
 ###
 POST http://localhost:3000/paymentsWithstripe
-Authorization: Bearer sk_test_51PYp1TRswI1Rz1KkPJ12rBuZBKyN9apKe0vYwhhkc3NRRrENs7mMklEBTUiERw4PNdoGogfYihiGtV2fG2cVkvTr0009bINx81
+Authorization: Bearer STRIPE_SECRET_KEY
 Content-Type: application/json
 
 {
