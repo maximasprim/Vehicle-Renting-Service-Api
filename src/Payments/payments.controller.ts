@@ -88,6 +88,7 @@ export const deletePayment =  async (c: Context) => {
 export const createPaymentWithStripe = async (c: Context) => {
   try {
     const { amount } = await c.req.json();
+    console.log(amount)
     const paymentIntent = await createPaymentIntent(amount);
 
     return c.json({ clientSecret: paymentIntent.client_secret }, 200);

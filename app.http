@@ -142,7 +142,7 @@ Content-Type: application/json
   "booking_id": 5,
   "user_id": 5,
   "vehicle_id": 7,
-  "location_id": "1",
+  "location_id": "5",
   "booking_date": "2021-09-01",
   "return_date": "2021-09-10",
   "total_amount": 1000,
@@ -166,7 +166,21 @@ DELETE http://localhost:3000/bookings/5
 ###
 GET http://localhost:3000/payments
 ###
-GET http://localhost:3000/paymentsWithstripe
+POST http://localhost:3000/paymentsWithstripe
+Authorization: Bearer sk_test_51PYp1TRswI1Rz1KkPJ12rBuZBKyN9apKe0vYwhhkc3NRRrENs7mMklEBTUiERw4PNdoGogfYihiGtV2fG2cVkvTr0009bINx81
+Content-Type: application/json
+
+{
+  "payment_id": 5,
+  "booking_id": 5,
+  "payment_date": "2021-09-01",
+  "amount": 1000,
+  "payment_status": "pending",
+  "payment_method": "credit card",
+  "transaction_id": "1234567890",
+  "created_at": "2021-09-01",
+  "updated_at": "2021-09-01"
+}
 ###
 GET http://localhost:3000/payments/1
 ###
