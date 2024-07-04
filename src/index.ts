@@ -11,6 +11,7 @@ import { paymentsRouter } from './Payments/payments.router';
 import { ticketRouter } from './Customer support Tickets/customer.router';
 import { locationRouter } from './Location and branches/location.router';
 import { fleetManagementRouter } from './Fleet Management/fleet.router';
+import { authRouter } from './Authentication/auth.router';
 
 const app = new Hono()
 
@@ -34,3 +35,4 @@ app.route('/', paymentsRouter)
 app.route('/', ticketRouter)
 app.route('/', locationRouter)
 app.route('/', fleetManagementRouter)
+app.route('/', authRouter)

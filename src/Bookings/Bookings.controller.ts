@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { bookingsService, getBookingsService, createBookingsService, updateBookingsService, deleteBookingsService } from "./Bookings.service";
+import { bookingsService, getBookingsService, createBookingsService, updateBookingsService, deleteBookingsService,getBookingWithVehicleAndPaymentsAndUserService } from "./Bookings.service";
 
 
 
@@ -81,4 +81,12 @@ export const deleteBooking =  async (c: Context) => {
   }catch(error: any){
       return c.json({error: error?.message}, 400)
   }
+}
+
+export const listBookingsWithVehicleAndUserAndPayments = async (c: Context) =>{
+  const data = await getBookingWithVehicleAndPaymentsAndUserService();
+  if ( data == null){
+    return c.text("Booking not Found", 404)
+  }
+    return c.json(data, 200);
 }

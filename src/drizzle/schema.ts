@@ -80,6 +80,8 @@ export const paymentsTable = pgTable("payments", {
 export const authenticationTable = pgTable("authentication", {
   auth_id: serial("auth_id").primaryKey(),
   user_id: integer("user_id").references(() => usersTable.user_id),
+  username: varchar("username", { length: 256 }).notNull(),
+  role: roleEnum("role").default("user"),
   password: varchar("password", { length: 256 }).notNull(),
   created_at: varchar("created_at",{ length: 50 }).notNull(),
   updated_at: varchar("updated_at",{ length: 50 }).notNull(),

@@ -1,8 +1,9 @@
 import { Hono } from "hono";
-import { createUser, getSingleUser, listUsers, updateUser, deleteUser } from "./user.controller";
+import { createUser, getSingleUser, listUsers, updateUser, deleteUser, listUserWithBookings, listsingleuserwithaddress, listUserWithTickets } from "./user.controller";
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { userSchema } from "../validators";
+import { adminRoleAuth,userRoleAuth } from "../middleware/Auth";
 
 
 
@@ -11,7 +12,7 @@ import { userSchema } from "../validators";
 export const userRouter = new Hono();
 
 // get states
-userRouter.get("/users", listUsers)
+userRouter.get("/users",adminRoleAuth, listUsers)
 
 //get a single user    
 
@@ -33,3 +34,10 @@ userRouter.put("/users/:id", updateUser)
 
 // delete Driver
 userRouter.delete("/users/:id", deleteUser)
+
+//get users with bookings
+userRouter.get("/usersWithBookings", listUserWithBookings)
+// userRouter.get("/users/withBookings/:id", listUserWithBookings)
+userRouter.get("/users/withBookings/:id", listsingleuserwithaddress)
+
+userRouter.get("/usersWithTickets", listUserWithTickets)  

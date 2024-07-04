@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { paymentsService, getPaymentsService, createPaymentsService, updatePaymentsService, deletePaymentsService } from "./payments.service";
+import { paymentsService, getPaymentsService, createPaymentsService, updatePaymentsService, deletePaymentsService,createPaymentIntent } from "./payments.service";
 
 
 
@@ -82,3 +82,16 @@ export const deletePayment =  async (c: Context) => {
       return c.json({error: error?.message}, 400)
   }
 }
+
+//payments with stripe
+
+export const createPaymentWithStripe = async (c: Context) => {
+  try {
+    const { amount } = await c.req.json();
+    const paymentIntent = await createPaymentIntent(amount);
+
+    return c.json({ clientSecret: paymentIntent.client_secret }, 200);
+  } catch (error: any) {
+    return c.json({ error: error.message }, 400);
+  }
+};

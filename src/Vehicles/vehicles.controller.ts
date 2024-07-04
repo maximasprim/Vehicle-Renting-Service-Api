@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { vehiclesService, getVehicleService, createVehicleService, updateVehicleService, deleteVehicleService  } from "./vehicles.service";
+import { vehiclesService, getVehicleService, createVehicleService, updateVehicleService, deleteVehicleService, getVehicleWithVehicle_SpecificationsService,getVehicleWithVehicleSpecsAndFleetManagementService  } from "./vehicles.service";
 
 
 
@@ -81,4 +81,20 @@ export const deletevehicle =  async (c: Context) => {
   }catch(error: any){
       return c.json({error: error?.message}, 400)
   }
+}
+
+//vehicles relations
+export const listVehiclesWithVehicle_Specifications = async (c: Context) =>{
+  const data = await getVehicleWithVehicle_SpecificationsService();
+  if ( data == null){
+    return c.text("vehicle not Found", 404)
+  }
+    return c.json(data, 200);
+}
+export const listVehiclesWithVehicle_SpecsAndFleet = async (c: Context) =>{
+  const data = await getVehicleWithVehicleSpecsAndFleetManagementService();
+  if ( data == null){
+    return c.text("vehicle not Found", 404)
+  }
+    return c.json(data, 200);
 }

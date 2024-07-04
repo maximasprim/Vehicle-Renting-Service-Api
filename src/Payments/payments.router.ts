@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { createPayment, getSinglePayment, listPayments, updatePayment, deletePayment } from "./payments.controller";
+import { createPayment, getSinglePayment, listPayments, updatePayment, deletePayment, createPaymentWithStripe } from "./payments.controller";
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import {paymentsSchema } from "../validators";
@@ -33,3 +33,5 @@ paymentsRouter.put("/payments/:id", updatePayment)
 
 // delete Driver
 paymentsRouter.delete("/payments/:id", deletePayment)
+
+paymentsRouter.post("/paymentsWithstripe", createPaymentWithStripe)

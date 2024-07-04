@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { createvehicle, getSinglevehicle, listvehicles, updatevehicle, deletevehicle } from "./vehicles.controller";
+import { createvehicle, getSinglevehicle, listvehicles, updatevehicle, deletevehicle, listVehiclesWithVehicle_Specifications,listVehiclesWithVehicle_SpecsAndFleet } from "./vehicles.controller";
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { vehicleSchema } from "../validators";
@@ -33,3 +33,7 @@ vehicleRouter.put("/vehicles/:id", updatevehicle)
 
 // delete Driver
 vehicleRouter.delete("/vehicles/:id", deletevehicle)
+
+vehicleRouter.get("/vehiclesWithSpecs", listVehiclesWithVehicle_Specifications)
+
+vehicleRouter.get("/vehiclesWithSpecsAndFleet", listVehiclesWithVehicle_SpecsAndFleet)

@@ -4,7 +4,7 @@ import { sql } from "drizzle-orm";
 import { mailFunction } from "../mail"
 
 export const createAuthUserService = async (user:TIAuthentication): Promise<string | null > => {
-    //await db.insert(AuthOnUsersTable).values(user)
+    //await db.insert(authenticationTable).values(user)
     console.log('User object received:', user);
 //added
     const { username, password} = user;
@@ -19,7 +19,7 @@ export const createAuthUserService = async (user:TIAuthentication): Promise<stri
     await db.insert(authenticationTable).values(user);
 
     // Sending welcome email to the user
-    await mailFunction(username, 'Welcome to My Restaurant API', 'welcome-email', { username, password });
+    await mailFunction(username, 'Welcome to My Vehicles API', 'welcome-email', { username, password });
 
         return "User created successfully";
     // return "User created successfully";
@@ -37,11 +37,10 @@ export const userloginService = async (user: TSAuthentication) =>{
     with: {
         user: {
             columns:{
-                name: true,
+                full_name: true,
                 contact_phone: true,
-                email: true,
-                confirmation_code: true,
-                id: true
+                address: true,
+                role: true,
             }
         }
     }

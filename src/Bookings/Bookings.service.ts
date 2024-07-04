@@ -29,3 +29,36 @@ export const deleteBookingsService = async (id: number) => {
     await db.delete(bookingsTable).where(eq(bookingsTable.booking_id, id))
     return "Booking deleted successfully";
 }
+
+export const getBookingWithVehicleAndPaymentsAndUserService = async (): Promise<
+  TSBookings[] | null
+> => {
+  return await db.query.bookingsTable.findMany({
+    with: {
+      vehicle: {
+        columns: {
+          vehicle_id: true,
+          availability: true,
+          
+        },
+      },
+      payments: {
+        columns: {
+          payment_id: true,
+          payment_status: true,
+          amount: true,
+          payment_method: true,
+          transaction_id: true,
+        },
+      },
+      user: {
+        columns: {
+          user_id: true,
+          full_name: true,
+          email: true,
+          role: true,
+        },
+      },
+    },
+  });
+};

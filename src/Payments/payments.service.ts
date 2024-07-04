@@ -1,5 +1,6 @@
 import db from "../drizzle/db";
 import { eq } from "drizzle-orm";
+import stripe from "../stripe";
 import { TIPayments,TSPayments,paymentsTable } from "../drizzle/schema";
 
 
@@ -29,3 +30,17 @@ export const deletePaymentsService = async (id: number) => {
     await db.delete(paymentsTable).where(eq(paymentsTable.payment_id, id))
     return "Payment deleted successfully";
 }
+
+//payments with stripe
+export const createPaymentIntent = async (amount: number, currency: string = 'usd') => {
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount,
+        currency,
+      });
+      return paymentIntent;
+    } catch (error) {
+      console.error('Error creating payment intent:', error);
+      throw new Error('Unable to create payment intent');
+    }
+  };

@@ -21,3 +21,9 @@ export const locationSchema = z.object({
 export const fleetManagementSchema = z.object({
 
 });
+export const  registerUserSchema= z.object({
+
+});
+export const  loginUserSchema= z.object({
+    
+});
