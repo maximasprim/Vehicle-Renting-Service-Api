@@ -139,7 +139,7 @@ POST http://localhost:3000/bookings
 Content-Type: application/json
 
 {
-  "booking_id": 5,
+  "booking_id": 6,
   "user_id": 5,
   "vehicle_id": 7,
   "location_id": "5",
@@ -171,7 +171,7 @@ Authorization: Bearer STRIPE_SECRET_KEY
 Content-Type: application/json
 
 {
-  "payment_id": 5,
+  "payment_id": 6,
   "booking_id": 5,
   "payment_date": "2021-09-01",
   "amount": 1000,
