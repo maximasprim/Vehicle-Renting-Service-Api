@@ -4,6 +4,8 @@ import "dotenv/config";
 import { HTTPException } from 'hono/http-exception';
 import { type Context } from "hono";
 import { userRouter } from './Users/user.router';
+import mailFunction from "./mail";
+import cron from 'node-cron'
 import { vehicleRouter } from './Vehicles/vehicles.router';
 import { vehicleSpecificationRouter } from './Vehicles Specification/vehiclesSpecification.router';
 import { bookingsRouter } from './Bookings/Bookings.router';
@@ -12,8 +14,19 @@ import { ticketRouter } from './Customer support Tickets/customer.router';
 import { locationRouter } from './Location and branches/location.router';
 import { fleetManagementRouter } from './Fleet Management/fleet.router';
 import { authRouter } from './Authentication/auth.router';
+import { cors } from 'hono/cors';
 
 const app = new Hono()
+
+//enable cors
+app.use(cors());
+app.use('*', cors());
+
+app.use(cors({
+  origin: '*',
+  allowMethods : ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowHeaders : ['Content-Type','Authorization'],
+}));
 
 app.get('/', (c) => {
   return c.text('Server is Running Fine!')

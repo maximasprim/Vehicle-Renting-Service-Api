@@ -17,11 +17,11 @@ export const createAuthUserService = async (user:TIAuthentication): Promise<stri
     }
 
     await db.insert(authenticationTable).values(user);
-
+    
     // Sending welcome email to the user
-    await mailFunction(username, 'Welcome to My Vehicles API', 'welcome-email', { username, password });
-
-        return "User created successfully";
+    await mailFunction(username, 'Welcome to Maximus CarBook', 'welcome-email', { username, password });
+    return "User created successfully and email sent to user";
+        
     // return "User created successfully";
 
 }

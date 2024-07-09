@@ -11,6 +11,7 @@ import {
 import { relations } from "drizzle-orm";
 
 
+
 // Users Table
 export const roleEnum = pgEnum("role", ["user", "admin"]);
 export const usersTable = pgTable("users", {
@@ -20,8 +21,8 @@ export const usersTable = pgTable("users", {
   contact_phone: varchar("contact_phone", { length: 20 }),
   address: varchar("address", { length: 256 }),
   role: roleEnum("role").default("user"),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: varchar("created_at",{ length: 50 }),
+  updated_at: varchar("updated_at",{ length: 50 }),
 });
 
 // Vehicles Table
@@ -83,8 +84,8 @@ export const authenticationTable = pgTable("authentication", {
   username: varchar("username", { length: 256 }).notNull(),
   role: roleEnum("role").default("user"),
   password: varchar("password", { length: 256 }).notNull(),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: varchar("created_at",{ length: 50 }),
+  updated_at: varchar("updated_at",{ length: 50 }),
 });
 
 // Customer Support Tickets Table

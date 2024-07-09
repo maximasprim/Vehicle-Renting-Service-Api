@@ -4,6 +4,39 @@ import { error, info } from "console"
 import cron from 'node-cron';
 import ejs from 'ejs'
 
+// export const mailFunction = ( to: string, subject: string, text: string ) =>{
+//     //transporter
+//     const transporter =  nodemailer.createTransport({
+//         service: 'gmail',
+//         auth:{
+//             user: process.env.Email,
+//             pass: process.env.PASSWORD
+//         }
+//     })
+//     const mailOptions = {
+//         from:process.env.EMAIL,
+//         to:"michaelmwasame16@gmail.com",
+//         subject:"Confirmation mail",
+//         text:"Registration successful"
+
+//     }
+//     // const mailOptions = {
+//     //     from:process.env.EMAIL,
+//     //     to,
+//     //     subject,
+//     //     text
+//     // }
+
+//     transporter.sendMail(mailOptions,(error, info)=>{
+//         if(error){
+//             console.log(error)
+//         }else{
+//             console.log(`Email sent:${info.response} `)
+//         }
+//     })
+// }
+// export default mailFunction;
+
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -72,7 +105,7 @@ const templates: { [key: string]: string } = {
     <body>
         <div class="container">
             <div class="header">
-                <h1>Welcome to My Restaurant API</h1>
+                <h1>Welcome to Maximus CarBook</h1>
             </div>
             <div class="content">
                 <p>Dear <strong><%= username %></strong>,</p>
@@ -82,7 +115,7 @@ const templates: { [key: string]: string } = {
                 <a href="https://restaurantapp.azurewebsites.net/api" class="button">Get Started</a>
             </div>
             <div class="footer">
-                <p>&copy; 2024 My Restaurant API. All rights reserved.</p>
+                <p>&copy; 2024 Maximus CarBook. All rights reserved.</p>
             </div>
         </div>
     </body>

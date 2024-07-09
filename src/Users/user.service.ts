@@ -22,7 +22,7 @@ export const createUserService = async (user: TIUsers): Promise<TIUsers> => {
 
 export const updateUserService = async (id: number, user: TIUsers) => {
     await db.update(usersTable).set(user).where(eq(usersTable.user_id, id))
-    return "User updated successfully";
+    return user;
 }
 
 export const deleteUserService = async (id: number) => {

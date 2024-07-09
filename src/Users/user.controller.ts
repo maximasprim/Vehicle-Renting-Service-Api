@@ -31,7 +31,7 @@ export const createUser = async (c: Context) => {
    if (!createdUser){
     return c.text("user not created!", 404)
    }
-    return c.json({msg: createdUser}, 201);
+    return c.json(createdUser, 201);
 } catch (error: any){
     return c.json({error: error?.message}, 400)
 }

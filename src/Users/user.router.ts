@@ -12,7 +12,7 @@ import { adminRoleAuth,userRoleAuth } from "../middleware/Auth";
 export const userRouter = new Hono();
 
 // get states
-userRouter.get("/users",adminRoleAuth, listUsers)
+userRouter.get("/users", listUsers)
 
 //get a single user    
 

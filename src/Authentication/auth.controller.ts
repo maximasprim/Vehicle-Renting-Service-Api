@@ -19,7 +19,7 @@ export const registerUser = async (c: Context) => {
     }
 
     //send welcome email
-    const subject = 'Welcome to My Restaurant API';
+    const subject = 'Welcome to Maximus CarBook';
     const text = `Your username: ${user.username}\nYour password: ${pass}`;
     await mailFunction(user.email, subject, 'welcome-email', { username: user.username, password: pass });
 

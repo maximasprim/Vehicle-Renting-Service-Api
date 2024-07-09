@@ -7,9 +7,11 @@ END $$;
 CREATE TABLE IF NOT EXISTS "authentication" (
 	"auth_id" serial PRIMARY KEY NOT NULL,
 	"user_id" integer,
+	"username" varchar(256) NOT NULL,
+	"role" "role" DEFAULT 'user',
 	"password" varchar(256) NOT NULL,
-	"created_at" varchar(50) NOT NULL,
-	"updated_at" varchar(50) NOT NULL
+	"created_at" varchar(50),
+	"updated_at" varchar(50)
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "bookings" (
@@ -75,8 +77,8 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"contact_phone" varchar(20),
 	"address" varchar(256),
 	"role" "role" DEFAULT 'user',
-	"created_at" varchar(50) NOT NULL,
-	"updated_at" varchar(50) NOT NULL,
+	"created_at" varchar(50),
+	"updated_at" varchar(50),
 	CONSTRAINT "users_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
