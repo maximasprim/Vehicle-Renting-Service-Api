@@ -3,6 +3,7 @@ import { createvehicleSpec, getSinglevehicleSpecification, listvehiclesSpecifica
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { vehicleSchema } from "../validators";
+import { adminRoleAuth, bothRolesAuth } from "../middleware/Auth";
 
 
 
@@ -15,7 +16,7 @@ vehicleSpecificationRouter.get("/vehiclesSpecifications", listvehiclesSpecificat
 
 //get a single vehicle    
 
-vehicleSpecificationRouter.get("/vehiclesSpecifications/:id", getSinglevehicleSpecification)
+vehicleSpecificationRouter.get("/vehiclesSpecifications/:id",bothRolesAuth, getSinglevehicleSpecification)
 
 // 
 
@@ -29,7 +30,7 @@ vehicleSpecificationRouter.post("/vehiclesSpecifications", zValidator('json', ve
 
 //update vehicle
 
-vehicleSpecificationRouter.put("/vehiclesSpecifications/:id", updatevehicleSpec)
+vehicleSpecificationRouter.put("/vehiclesSpecifications/:id",adminRoleAuth, updatevehicleSpec)
 
 // delete Driver
-vehicleSpecificationRouter.delete("/vehiclesSpecifications/:id", deletevehicleSpec)
+vehicleSpecificationRouter.delete("/vehiclesSpecifications/:id",adminRoleAuth, deletevehicleSpec)

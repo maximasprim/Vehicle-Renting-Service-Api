@@ -3,6 +3,7 @@ import { createFleetManagement, getSingleFleetManagement, listFleetManagement, u
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import {fleetManagementSchema } from "../validators";
+import { adminRoleAuth, userRoleAuth } from "../middleware/Auth";
 
 
 
@@ -15,7 +16,7 @@ fleetManagementRouter.get("/fleetManagement", listFleetManagement)
 
 //get a single Driver    
 
-fleetManagementRouter.get("/fleetManagement/:id", getSingleFleetManagement)
+fleetManagementRouter.get("/fleetManagement/:id",userRoleAuth, getSingleFleetManagement)
 
 
 
@@ -25,7 +26,7 @@ fleetManagementRouter.post("/fleetManagement", zValidator('json', fleetManagemen
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,createFleetManagement)
+}) ,adminRoleAuth,createFleetManagement)
 
 //update Driver
 

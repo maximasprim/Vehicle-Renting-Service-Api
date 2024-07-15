@@ -18,10 +18,10 @@ export const registerUser = async (c: Context) => {
       return c.text("user not created!", 404);
     }
 
-    //send welcome email
-    const subject = 'Welcome to Maximus CarBook';
-    const text = `Your username: ${user.username}\nYour password: ${pass}`;
-    await mailFunction(user.email, subject, 'welcome-email', { username: user.username, password: pass });
+    // //send welcome email
+    // const subject = 'Welcome to Maximus CarBook';
+    // const text = `Your username: ${user.username}\nYour password: ${pass}`;
+    // await mailFunction(user.email, subject, 'welcome-email', { username: user.username, password: pass });
 
 
     return c.json({ msg: createdUser }, 201);

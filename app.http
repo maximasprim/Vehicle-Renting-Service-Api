@@ -7,20 +7,17 @@ POST  http://localhost:3000/register
  
  {
    
-    "username":"Maxdjykt",
+    "username":"maxx",
     "password":"pass",
-    "role":"admin",
-    "created_at": "2021-09-01",
-    "updated_at": "2021-09-01"
+    "role":"admin"
+    
  }
 ###
 POST  http://localhost:3000/login
  Content-Type: application/json
  
- 
-
  {
-    "username":"Maxdjykt",
+    "username":"maxx",
     "role":"admin",
     "password":"pass"
     
@@ -28,30 +25,36 @@ POST  http://localhost:3000/login
 
 ###
 GET http://localhost:3000/users
-# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbXVzIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwNDY4OTM4fQ.MJ1OWvwGgUetoaybC7u0n3OWCszCcMw4oUFckMXRyKI
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXh4Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwOTAyODUyfQ.E4gyy_BYyqR8WIhUcaZaGK6N_4vyUfylwEXakq5ic3o
 ###
 GET http://localhost:3000/users/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXh4Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwODkzMDI1fQ.gEx0oV_4xZ5W4IwhOTnH5RqWpaRMWum3NwbMLEMSTpc
 ###
 GET http://localhost:3000/usersWithBookings
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXh4Iiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzIwOTAyODUyfQ.E4gyy_BYyqR8WIhUcaZaGK6N_4vyUfylwEXakq5ic3o
 ###
 GET http://localhost:3000/users/withBookings/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 ###
 GET http://localhost:3000/usersWithTickets
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDAyMTZ9.L1qTPSfVagFQN4xLzMjy7mD6LIn95OB_-On8dgUs-Rg
 ###
 POST http://localhost:3000/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDAyMTZ9.L1qTPSfVagFQN4xLzMjy7mD6LIn95OB_-On8dgUs-Rg
 Content-Type: application/json
 
 {
     
-  "full_name": "michelll",
-  "email": "michelll@gmail.com",
+  "full_name": "michell",
+  "email": "michell@gmail.com",
   "contact_phone": "1234567890",
   "address": "1234 Main St, City, State, 12345",
   "role": "user"
   
 }
 ###
-PUT http://localhost:3000/users/13
+PUT http://localhost:3000/users/20
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTk2MjB9.kAqEo5FSXmwoq8fjocN6ESBkg8GlVI5vKigxaAssnXo
 Content-Type: application/json
 
 {
@@ -59,31 +62,37 @@ Content-Type: application/json
   "email": "John Doe@gmail"
 }
 ###
-DELETE http://localhost:3000/users/15
+DELETE http://localhost:3000/users/26
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 
 //vehicles queries
 ###
 GET http://localhost:3000/vehicles
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDEzOTN9.XuUAP3Rj4r_ZULM7mAICmJLsCnhqvJyJka6DG4xIwX0
 ###
 GET http://localhost:3000/vehicles/1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDEzOTN9.XuUAP3Rj4r_ZULM7mAICmJLsCnhqvJyJka6DG4xIwX0
 ###
 GET http://localhost:3000/vehiclesWithSpecs
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDEzOTN9.XuUAP3Rj4r_ZULM7mAICmJLsCnhqvJyJka6DG4xIwX0
 ###
 GET http://localhost:3000/vehiclesWithSpecsAndFleet   
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 ###
 POST http://localhost:3000/vehicles
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 Content-Type: application/json
 
 {
     
   "rental_rate": 100,
-  "availability": "false",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "availability": "false"
+  
   
 }
 ###
-PUT http://localhost:3000/vehicles/2
+PUT http://localhost:3000/vehicles/1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 Content-Type: application/json
 
 {
@@ -92,19 +101,23 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:3000/vehicles/5
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 
 //vehicles specifications queries
 
 ###
 GET http://localhost:3000/vehiclesSpecifications
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDE2NzF9.DPT3G1ioj2bEhaPJYxmtqt3qBpcF0g1iC5WHAeubE34
 ###
 GET http://localhost:3000/vehiclesSpecifications/1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDE2NzF9.DPT3G1ioj2bEhaPJYxmtqt3qBpcF0g1iC5WHAeubE34
 ###
 POST http://localhost:3000/vehiclesSpecifications
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDE2NzF9.DPT3G1ioj2bEhaPJYxmtqt3qBpcF0g1iC5WHAeubE34
 Content-Type: application/json
 
 {
-  "vehicleSpec_id": 2,
+  "vehicleSpec_id": 5,
   "vehicle_id": 1,
   "manufacturer": "Toyota",
   "model": "crown",
@@ -118,6 +131,7 @@ Content-Type: application/json
 }
 ###
 PUT http://localhost:3000/vehiclesSpecifications/2
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 Content-Type: application/json
 
 {
@@ -126,34 +140,38 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/vehiclesSpecifications/5
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 
 //Bookings queries
 ###
 GET http://localhost:3000/bookings
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3MDcxOTl9.85JgVHYowIcRPtTXk6rkhVDzenAqbN5mkxc4KSJoJ9s
 ###
 GET http://localhost:3000/bookings/1
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXh5Iiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA4MDA5OTB9.Rgxzn1MwKstUlHmptOFqBf3SMSQ3biPxVpYn0IjD60o
 
 ###
 GET http://localhost:3000/bookingsWith-vehicle-and-user-and-payments
 ###
 POST http://localhost:3000/bookings
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3MTUxMzh9.prHi1HAXgEPNnhQbA52EDVN95O0lBo6L8xsA3czyL4w
 Content-Type: application/json
 
 {
-  "booking_id": 6,
-  "user_id": 5,
-  "vehicle_id": 7,
+  
+  "user_id": 24,
+  "vehicle_id": 1,
   "location_id": "5",
   "booking_date": "2021-09-01",
   "return_date": "2021-09-10",
   "total_amount": 1000,
-  "booking_status": "pending",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "booking_status": "pending"
+  
 }
 
 ###
 PUT http://localhost:3000/bookings/2
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 Content-Type: application/json
 
 {
@@ -162,30 +180,25 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/bookings/5
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhkanlrdCIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyMDcwMzk1OX0.zRAD4wgosjBfLVG3ftXpkTmbdEWd3rzB4DaCzATMm-4
 
 //payments queries
 ###
 GET http://localhost:3000/payments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3MDc3NTJ9.dUWn-69q9UhlHla8FAxw2eTDmE7cDqJ47dWeLJigfe8
 ###
 POST http://localhost:3000/paymentsWithstripe
-Authorization: Bearer STRIPE_SECRET_KEY
 Content-Type: application/json
 
 {
-  "payment_id": 6,
-  "booking_id": 5,
-  "payment_date": "2021-09-01",
-  "amount": 1000,
-  "payment_status": "pending",
-  "payment_method": "credit card",
-  "transaction_id": "1234567890",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "amount": 1000
 }
 ###
 GET http://localhost:3000/payments/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3MDc3NTJ9.dUWn-69q9UhlHla8FAxw2eTDmE7cDqJ47dWeLJigfe8
 ###
 POST http://localhost:3000/payments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 Content-Type: application/json
 
 {
@@ -195,13 +208,13 @@ Content-Type: application/json
   "amount": 1000,
   "payment_status": "pending",
   "payment_method": "credit card",
-  "transaction_id": "1234567890",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "transaction_id": "1234567890"
+  
 }
 
 ###
 PUT http://localhost:3000/payments/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3MDc3NTJ9.dUWn-69q9UhlHla8FAxw2eTDmE7cDqJ47dWeLJigfe8
 Content-Type: application/json
 
 {
@@ -209,14 +222,20 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:3000/payments/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTg4MDJ9.J_jqk079MNt-5YerPnOyHf0DowNcwAWrZHTOSIN4lA8
 
 //Customer support tickets queries
 ###
 GET http://localhost:3000/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
+
 ###
 GET http://localhost:3000/ticket/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
+
 ###
 POST http://localhost:3000/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 Content-Type: application/json
 
 {
@@ -224,12 +243,12 @@ Content-Type: application/json
   "user_id": 5,
   "subject": "Booking issue",
   "description": "I have a problem with my booking",
-  "status": "pending",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "status": "pending"
+  
 }
 ###
 PUT http://localhost:3000/ticket/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 Content-Type: application/json
 
 {
@@ -237,36 +256,44 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:3000/ticket/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 
 //Locations queries
 ###
 GET http://localhost:3000/location
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTg2NTd9.VrprJrGWwR_5SiCPFKY4MiMidVr4AmHTAs2c6ysu1Js
 ###
 GET http://localhost:3000/location/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTg2NTd9.VrprJrGWwR_5SiCPFKY4MiMidVr4AmHTAs2c6ysu1Js
 ###
 POST http://localhost:3000/location
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTg2NTd9.VrprJrGWwR_5SiCPFKY4MiMidVr4AmHTAs2c6ysu1Js
 Content-Type: application/json
 
 {
   "location_id": 5,
   "name": "Nairobi",
   "address": "1234 Main St, City, State, 12345",
-  "contact_phone": "1234567890",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "contact_phone": "1234567890"
+  
 }
 ###
 PUT http://localhost:3000/location/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 ###
 DELETE http://localhost:3000/location/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 
 //fleetMagement queries
 ###
 GET http://localhost:3000/fleetManagement
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 ###
 GET http://localhost:3000/fleetManagement/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 ###
 post http://localhost:3000/fleetManagement
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTc2OTV9.t2Yyl2SjZgmm_mRmKk7jKM40Le8dODFep94s91KNPjI
 Content-Type: application/json
 
 {
@@ -276,7 +303,8 @@ Content-Type: application/json
   "depreciation_rate": 0.1,
   "current_value": 10000,
   "maintenance_status": "good",
-  "status": "active",
-  "created_at": "2021-09-01",
-  "updated_at": "2021-09-01"
+  "status": "active"
+  
 }
+###
+DELETE http://localhost:3000/fleetManagement/1

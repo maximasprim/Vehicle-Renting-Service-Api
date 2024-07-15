@@ -18,6 +18,7 @@ export const authMiddleware = async (c: Context, next: Next, requiredRole: strin
     if (!token) return c.json({ error: "Token not provided" }, 401);
 
     const decoded = await verifyToken(token, process.env.JWT_SECRET as string);
+    console.log(decoded)
 
     if (!decoded) return c.json({ error: "Invalid token" }, 401);
 

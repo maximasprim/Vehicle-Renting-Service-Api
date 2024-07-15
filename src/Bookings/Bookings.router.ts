@@ -3,6 +3,7 @@ import { createBooking, getSingleBooking, listBookings, updateBooking, deleteBoo
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import {bookingsSchema } from "../validators";
+import { adminRoleAuth, bothRolesAuth,userRoleAuth } from "../middleware/Auth";
 
 
 
@@ -15,7 +16,7 @@ bookingsRouter.get("/bookings", listBookings)
 
 //get a single Driver    
 
-bookingsRouter.get("/bookings/:id", getSingleBooking)
+bookingsRouter.get("/bookings/:id",userRoleAuth, getSingleBooking)
 
 
 
@@ -25,13 +26,13 @@ bookingsRouter.post("/bookings", zValidator('json', bookingsSchema, (results, c)
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,createBooking)
+}) ,bothRolesAuth,createBooking)
 
 //update Driver
 
-bookingsRouter.put("/bookings/:id", updateBooking)
+bookingsRouter.put("/bookings/:id",bothRolesAuth, updateBooking)
 
 // delete Driver
-bookingsRouter.delete("/bookings/:id", deleteBooking)
+bookingsRouter.delete("/bookings/:id", adminRoleAuth,deleteBooking)
 
-bookingsRouter.get("/bookingsWith-vehicle-and-user-and-payments", listBookingsWithVehicleAndUserAndPayments)
+bookingsRouter.get("/bookingsWith-vehicle-and-user-and-payments",bothRolesAuth, listBookingsWithVehicleAndUserAndPayments)

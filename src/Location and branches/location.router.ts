@@ -3,6 +3,7 @@ import { createLocation, getSingleLocation, listLocation, updateLocation, delete
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import {locationSchema } from "../validators";
+import { adminRoleAuth, bothRolesAuth, userRoleAuth } from "../middleware/Auth";
 
 
 
@@ -11,11 +12,11 @@ import {locationSchema } from "../validators";
 export const locationRouter = new Hono();
 
 //get states
-locationRouter.get("/location", listLocation)
+locationRouter.get("/location",bothRolesAuth, listLocation)
 
 //get a single Driver    
 
-locationRouter.get("/location/:id", getSingleLocation)
+locationRouter.get("/location/:id",userRoleAuth, getSingleLocation)
 
 
 
@@ -25,11 +26,11 @@ locationRouter.post("/location", zValidator('json', locationSchema, (results, c)
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,createLocation)
+}) ,adminRoleAuth,createLocation)
 
 //update Driver
 
-locationRouter.put("/location/:id", updateLocation)
+locationRouter.put("/location/:id",adminRoleAuth, updateLocation)
 
 // delete Driver
-locationRouter.delete("/location/:id", deleteLocation)
+locationRouter.delete("/location/:id",adminRoleAuth, deleteLocation)

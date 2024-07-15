@@ -3,6 +3,7 @@ import { createvehicle, getSinglevehicle, listvehicles, updatevehicle, deleteveh
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { vehicleSchema } from "../validators";
+import { bothRolesAuth,adminRoleAuth,userRoleAuth } from "../middleware/Auth";
 
 
 
@@ -15,7 +16,7 @@ vehicleRouter.get("/vehicles", listvehicles)
 
 //get a single vehicle    
 
-vehicleRouter.get("/vehicles/:id", getSinglevehicle)
+vehicleRouter.get("/vehicles/:id",userRoleAuth, getSinglevehicle)
 
 // 
 
@@ -25,15 +26,15 @@ vehicleRouter.post("/vehicles", zValidator('json', vehicleSchema, (results, c) =
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,createvehicle)
+}) ,adminRoleAuth,createvehicle)
 
 //update vehicle
 
-vehicleRouter.put("/vehicles/:id", updatevehicle)
+vehicleRouter.put("/vehicles/:id",adminRoleAuth, updatevehicle)
 
 // delete Driver
-vehicleRouter.delete("/vehicles/:id", deletevehicle)
+vehicleRouter.delete("/vehicles/:id",adminRoleAuth, deletevehicle)
 
-vehicleRouter.get("/vehiclesWithSpecs", listVehiclesWithVehicle_Specifications)
+vehicleRouter.get("/vehiclesWithSpecs",bothRolesAuth, listVehiclesWithVehicle_Specifications)
 
-vehicleRouter.get("/vehiclesWithSpecsAndFleet", listVehiclesWithVehicle_SpecsAndFleet)
+vehicleRouter.get("/vehiclesWithSpecsAndFleet",adminRoleAuth, listVehiclesWithVehicle_SpecsAndFleet)

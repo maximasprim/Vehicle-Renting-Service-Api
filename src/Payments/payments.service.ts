@@ -38,6 +38,7 @@ export const createPaymentIntent = async (amount: number, currency: string = 'us
         amount,
         currency,
       });
+      console.log(paymentIntent)
       return paymentIntent;
     } catch (error) {
       console.error('Error creating payment intent:', error);

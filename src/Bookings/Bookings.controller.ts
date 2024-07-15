@@ -1,6 +1,6 @@
 import { Context } from "hono";
 import { bookingsService, getBookingsService, createBookingsService, updateBookingsService, deleteBookingsService,getBookingWithVehicleAndPaymentsAndUserService } from "./Bookings.service";
-
+import { createPaymentWithStripe } from "../Payments/payments.controller";
 
 
 
@@ -24,18 +24,22 @@ export const getSingleBooking = async (c: Context) => {
   return c.json(booking, 200);
 } 
 
-export const createBooking = async (c: Context) => {
-  try{
+export const createBooking = async (c: Context): Promise<Response> => {
+  try {
     const book = await c.req.json();
+
+    // Create booking
     const createdBooking = await createBookingsService(book);
-   if (!createdBooking){
-    return c.text("Booking not created!", 404)
-   }
+
+    if (!createdBooking) {
+      return c.text("Booking not created!", 404);
+    }
+
     return c.json(createdBooking, 201);
-} catch (error: any){
-    return c.json({error: error?.message}, 400)
-}
-}
+  } catch (error: any) {
+    return c.json({ error: error.message }, 400);
+  }
+};
 
 export const updateBooking = async (c: Context) => {
   const id = parseInt(c.req.param("id"));

@@ -3,7 +3,7 @@ import { createUser, getSingleUser, listUsers, updateUser, deleteUser, listUserW
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { userSchema } from "../validators";
-import { adminRoleAuth,userRoleAuth } from "../middleware/Auth";
+import { adminRoleAuth,userRoleAuth,bothRolesAuth } from "../middleware/Auth";
 
 
 
@@ -12,7 +12,7 @@ import { adminRoleAuth,userRoleAuth } from "../middleware/Auth";
 export const userRouter = new Hono();
 
 // get states
-userRouter.get("/users", listUsers)
+userRouter.get("/users",listUsers)
 
 //get a single user    
 
@@ -26,7 +26,7 @@ userRouter.post("/users", zValidator('json', userSchema, (results, c) => {
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,createUser)
+}),createUser)
 
 //update user
 
@@ -36,8 +36,8 @@ userRouter.put("/users/:id", updateUser)
 userRouter.delete("/users/:id", deleteUser)
 
 //get users with bookings
-userRouter.get("/usersWithBookings", listUserWithBookings)
+userRouter.get("/usersWithBookings",bothRolesAuth, listUserWithBookings)
 // userRouter.get("/users/withBookings/:id", listUserWithBookings)
-userRouter.get("/users/withBookings/:id", listsingleuserwithaddress)
+userRouter.get("/users/withBookings/:id",bothRolesAuth, listsingleuserwithaddress)
 
-userRouter.get("/usersWithTickets", listUserWithTickets)  
+userRouter.get("/usersWithTickets",bothRolesAuth, listUserWithTickets)  

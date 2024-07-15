@@ -1,6 +1,13 @@
 import { z } from 'zod';
 
 export const userSchema = z.object({
+    // user_id:z.number(),
+    full_name:z.string(),
+    email:z.string().email(),
+    contact_phone:z.string(),
+    address:z.string(),
+    role:z.string()
+    
 
 });
 export const vehicleSchema = z.object({

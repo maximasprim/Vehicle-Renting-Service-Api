@@ -88,11 +88,17 @@ export const deletePayment =  async (c: Context) => {
 export const createPaymentWithStripe = async (c: Context) => {
   try {
     const { amount } = await c.req.json();
-    console.log(amount)
+    console.log('Received amount:',amount)
+    if (!amount) {
+      throw new Error('Amount is required');
+    }
+
     const paymentIntent = await createPaymentIntent(amount);
+    console.log('Created payment intent:', paymentIntent);
 
     return c.json({ clientSecret: paymentIntent.client_secret }, 200);
   } catch (error: any) {
+    console.error('Error creating payment with Stripe:', error);
     return c.json({ error: error.message }, 400);
   }
 };

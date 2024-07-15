@@ -13,16 +13,16 @@ import { relations } from "drizzle-orm";
 
 
 // Users Table
-export const roleEnum = pgEnum("role", ["user", "admin"]);
+export const roleEnum = pgEnum("role", ["user", "admin","both"]);
 export const usersTable = pgTable("users", {
   user_id: serial("user_id").primaryKey(),
   full_name: varchar("full_name", { length: 256 }).notNull(),
-  email: varchar("email", { length: 256 }).unique().notNull(),
+  email: varchar("email", { length: 256 }).unique(),
   contact_phone: varchar("contact_phone", { length: 20 }),
   address: varchar("address", { length: 256 }),
   role: roleEnum("role").default("user"),
-  created_at: varchar("created_at",{ length: 50 }),
-  updated_at: varchar("updated_at",{ length: 50 }),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Vehicles Table
@@ -31,14 +31,14 @@ export const vehiclesTable = pgTable("vehicles", {
   // vehicleSpec_id: integer("vehicleSpec_id").references(() => vehicleSpecificationsTable.vehicleSpec_id),
   rental_rate: varchar("rental_rate", { length: 10 }).notNull(),
   availability: boolean("availability").default(true),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Vehicle Specifications Table
 export const vehicleSpecificationsTable = pgTable("vehicle_specifications", {
   vehicleSpec_id: serial("vehicleSpec_id").primaryKey(),
-  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id),
+  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id,{ onDelete: "cascade"}),
   manufacturer: varchar("manufacturer", { length: 256 }).notNull(),
   model: varchar("model", { length: 256 }).notNull(),
   year: integer("year").notNull(),
@@ -54,49 +54,49 @@ export const vehicleSpecificationsTable = pgTable("vehicle_specifications", {
 export const bookingsTable = pgTable("bookings", {
   booking_id: serial("booking_id").primaryKey(),
   user_id: integer("user_id").references(() => usersTable.user_id),
-  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id),
-  location_id: integer("location_id").references(() => locationsTable.location_id),
+  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id,{ onDelete: "cascade"}),
+  location_id: integer("location_id").references(() => locationsTable.location_id,{ onDelete: "cascade"}),
   booking_date: varchar("booking_date", { length: 50 }).notNull(),
   return_date: varchar("return_date", { length: 50 }).notNull(),
   total_amount: varchar("total_amount", { length: 10 }).notNull(),
   booking_status: varchar("booking_status", { length: 256 }).default("Pending"),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Payments Table
 export const paymentsTable = pgTable("payments", {
   payment_id: serial("payment_id").primaryKey(),
-  booking_id: integer("booking_id").references(() => bookingsTable.booking_id),
+  booking_id: integer("booking_id").references(() => bookingsTable.booking_id,{ onDelete: "cascade"}),
   amount: varchar("amount", { length: 256 }).notNull(),
   payment_status: varchar("payment_status", { length: 256 }).default("Pending"),
   payment_date: varchar("payment_date", { length: 50 }).notNull(),
   payment_method: varchar("payment_method", { length: 256 }),
   transaction_id: varchar("transaction_id", { length: 256 }),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Authentication Table
 export const authenticationTable = pgTable("authentication", {
   auth_id: serial("auth_id").primaryKey(),
-  user_id: integer("user_id").references(() => usersTable.user_id),
+  user_id: integer("user_id").references(() => usersTable.user_id,{ onDelete: "cascade"}),
   username: varchar("username", { length: 256 }).notNull(),
   role: roleEnum("role").default("user"),
   password: varchar("password", { length: 256 }).notNull(),
-  created_at: varchar("created_at",{ length: 50 }),
-  updated_at: varchar("updated_at",{ length: 50 }),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Customer Support Tickets Table
 export const customerSupportTicketsTable = pgTable("customer_support_tickets", {
   ticket_id: serial("ticket_id").primaryKey(),
-  user_id: integer("user_id").references(() => usersTable.user_id),
+  user_id: integer("user_id").references(() => usersTable.user_id,{ onDelete: "cascade"}),
   subject: varchar("subject", { length: 256 }).notNull(),
   description: varchar("description", { length: 256 }).notNull(),
   status: varchar("status", { length: 256 }).default("Open"),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Locations Table
@@ -105,21 +105,21 @@ export const locationsTable = pgTable("locations", {
   name: varchar("name", { length: 256 }).notNull(),
   address: varchar("address", { length: 256 }).notNull(),
   contact_phone: varchar("contact_phone", { length: 20 }),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Fleet Management Table
 export const fleetManagementTable = pgTable("fleet_management", {
   fleet_id: serial("fleet_id").primaryKey(),
-  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id),
+  vehicle_id: integer("vehicle_id").references(() => vehiclesTable.vehicle_id,{ onDelete: "cascade"}),
   acquisition_date: varchar("acquisition_date", { length: 50 }).notNull(),
   depreciation_rate: varchar("depreciation_rate", { length: 256 }).notNull(),
   current_value: varchar("current_value", { length: 256 }).notNull(),
   maintenance_cost: varchar("maintenance_cost", { length: 256 }),
   status: varchar("status", { length: 256 }),
-  created_at: varchar("created_at",{ length: 50 }).notNull(),
-  updated_at: varchar("updated_at",{ length: 50 }).notNull(),
+  created_at: timestamp("created_at").notNull().defaultNow(),
+  updated_at: timestamp("updated_at").notNull().defaultNow(),
 });
 
 // Relations

@@ -3,6 +3,7 @@ import { createTicket, getSingleTicket, listTicket, updateTicket, deleteTicket }
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import {ticketSchema } from "../validators";
+import { bothRolesAuth } from "../middleware/Auth";
 
 
 
@@ -15,7 +16,7 @@ ticketRouter.get("/ticket", listTicket)
 
 //get a single Driver    
 
-ticketRouter.get("/ticket/:id", getSingleTicket)
+ticketRouter.get("/ticket/:id",bothRolesAuth, getSingleTicket)
 
 
 
@@ -29,7 +30,7 @@ ticketRouter.post("/ticket", zValidator('json', ticketSchema, (results, c) => {
 
 //update Driver
 
-ticketRouter.put("/ticket/:id", updateTicket)
+ticketRouter.put("/ticket/:id",bothRolesAuth, updateTicket)
 
 // delete Driver
-ticketRouter.delete("/ticket/:id", deleteTicket)
+ticketRouter.delete("/ticket/:id",bothRolesAuth, deleteTicket)
