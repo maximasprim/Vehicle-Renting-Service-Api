@@ -36,7 +36,8 @@ export const createPaymentIntent = async (amount: number, currency: string = 'us
     try {
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
-        currency,
+        currency:'usd',
+        payment_method_types: ['card'],
       });
       console.log(paymentIntent)
       return paymentIntent;

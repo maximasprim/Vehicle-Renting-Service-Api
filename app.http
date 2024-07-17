@@ -7,7 +7,7 @@ POST  http://localhost:3000/register
  
  {
    
-    "username":"maxx",
+    "username":"Maxd",
     "password":"pass",
     "role":"admin"
     
@@ -17,7 +17,7 @@ POST  http://localhost:3000/login
  Content-Type: application/json
  
  {
-    "username":"maxx",
+    "username":"Maxd",
     "role":"admin",
     "password":"pass"
     
@@ -53,13 +53,13 @@ Content-Type: application/json
   
 }
 ###
-PUT http://localhost:3000/users/20
+PUT http://localhost:3000/users/1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNYXhpbWFzIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MjA3OTk2MjB9.kAqEo5FSXmwoq8fjocN6ESBkg8GlVI5vKigxaAssnXo
 Content-Type: application/json
 
 {
     
-  "email": "John Doe@gmail"
+  "email": "JohnyDoe@gmail"
 }
 ###
 DELETE http://localhost:3000/users/26

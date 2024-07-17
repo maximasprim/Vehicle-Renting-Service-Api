@@ -26,7 +26,7 @@ bookingsRouter.post("/bookings", zValidator('json', bookingsSchema, (results, c)
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,bothRolesAuth,createBooking)
+}) ,createBooking)
 
 //update Driver
 

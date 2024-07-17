@@ -33,4 +33,4 @@ vehicleSpecificationRouter.post("/vehiclesSpecifications", zValidator('json', ve
 vehicleSpecificationRouter.put("/vehiclesSpecifications/:id",adminRoleAuth, updatevehicleSpec)
 
 // delete Driver
-vehicleSpecificationRouter.delete("/vehiclesSpecifications/:id",adminRoleAuth, deletevehicleSpec)
+vehicleSpecificationRouter.delete("/vehiclesSpecifications/:id", deletevehicleSpec)

@@ -38,14 +38,14 @@ export const createUser = async (c: Context) => {
 }
 
 export const updateUser = async (c: Context) => {
-  try{
-  const id = Number(c.req.param("user_id"));
-  console.log("controller:",id)
+  const id = parseInt(c.req.param("id"));
+  console.log
   if (isNaN(id)) 
       return c.text("invalid ID!", 400);
 
   const user = await c.req.json();
   console.log(user)
+  try{
   //search for user
   const founduser = await getUserService(id);
   if (founduser == undefined) 

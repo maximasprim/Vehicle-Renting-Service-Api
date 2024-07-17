@@ -30,7 +30,7 @@ ticketRouter.post("/ticket", zValidator('json', ticketSchema, (results, c) => {
 
 //update Driver
 
-ticketRouter.put("/ticket/:id",bothRolesAuth, updateTicket)
+ticketRouter.put("/ticket/:id", updateTicket)
 
 // delete Driver
-ticketRouter.delete("/ticket/:id",bothRolesAuth, deleteTicket)
+ticketRouter.delete("/ticket/:id", deleteTicket)

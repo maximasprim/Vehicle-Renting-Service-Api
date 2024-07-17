@@ -16,7 +16,7 @@ vehicleRouter.get("/vehicles", listvehicles)
 
 //get a single vehicle    
 
-vehicleRouter.get("/vehicles/:id",userRoleAuth, getSinglevehicle)
+vehicleRouter.get("/vehicles/:id", getSinglevehicle)
 
 // 
 
@@ -26,14 +26,14 @@ vehicleRouter.post("/vehicles", zValidator('json', vehicleSchema, (results, c) =
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,adminRoleAuth,createvehicle)
+}) ,createvehicle)
 
 //update vehicle
 
 vehicleRouter.put("/vehicles/:id",adminRoleAuth, updatevehicle)
 
 // delete Driver
-vehicleRouter.delete("/vehicles/:id",adminRoleAuth, deletevehicle)
+vehicleRouter.delete("/vehicles/:id", deletevehicle)
 
 vehicleRouter.get("/vehiclesWithSpecs",bothRolesAuth, listVehiclesWithVehicle_Specifications)
 
