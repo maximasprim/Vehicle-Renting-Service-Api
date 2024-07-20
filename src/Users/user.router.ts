@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { createUser, getSingleUser, listUsers, updateUser, deleteUser, listUserWithBookings, listsingleuserwithaddress, listUserWithTickets } from "./user.controller";
+import { createUser, getSingleUser, listUsers, updateUser, deleteUser, listUserWithBookings, listsingleuserwithBooking, listUserWithTickets,listSingleUserWithTickets } from "./user.controller";
 import {zValidator} from "@hono/zod-validator"
 import { type Context } from "hono";
 import { userSchema } from "../validators";
@@ -36,8 +36,9 @@ userRouter.put("/users/:id", updateUser)
 userRouter.delete("/users/:id", deleteUser)
 
 //get users with bookings
-userRouter.get("/usersWithBookings",bothRolesAuth, listUserWithBookings)
+userRouter.get("/usersWithBookings", listUserWithBookings)
 // userRouter.get("/users/withBookings/:id", listUserWithBookings)
-userRouter.get("/users/withBookings/:id",bothRolesAuth, listsingleuserwithaddress)
+userRouter.get("/users/withBookings/:id", listsingleuserwithBooking)
 
-userRouter.get("/usersWithTickets",bothRolesAuth, listUserWithTickets)  
+userRouter.get("/usersWithTickets", listUserWithTickets)  
+userRouter.get("/users/singleUserWithTickets/:id", listSingleUserWithTickets)  

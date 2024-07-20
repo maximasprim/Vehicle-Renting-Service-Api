@@ -148,3 +148,4 @@ export const mailFunction = async (to: string, subject: string, templateName: st
 };
 
 export default mailFunction;
+

@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { usersService, getUserService, createUserService, updateUserService, deleteUserService, getUserWithBookingsService, getSingleUserWithBookingService,getUserWithTicketsService } from "./user.service";
+import { usersService, getUserService, createUserService, updateUserService, deleteUserService, getUserWithBookingsService, getSingleUserWithBookingService,getUserWithTicketsService,getSingleUserWithTicketsService } from "./user.service";
 
 
 
@@ -38,6 +38,7 @@ export const createUser = async (c: Context) => {
 }
 
 export const updateUser = async (c: Context) => {
+  try{
   const id = parseInt(c.req.param("id"));
   console.log
   if (isNaN(id)) 
@@ -45,7 +46,6 @@ export const updateUser = async (c: Context) => {
 
   const user = await c.req.json();
   console.log(user)
-  try{
   //search for user
   const founduser = await getUserService(id);
   if (founduser == undefined) 
@@ -53,9 +53,9 @@ export const updateUser = async (c: Context) => {
   //get the data and update
   const res = await updateUserService(id, user);
   //return the updated user
+if (!res ) return c.text("user not updated!", 404);
 
-  if (!res )
-    return c.text("user not updated!", 404); 
+
     return c.json({msg: res}, 201);
 
 } catch (error: any){
@@ -96,7 +96,7 @@ export const listUserWithBookings = async (c: Context) =>{
     return c.json(data, 200);
 }
 
-export const listsingleuserwithaddress = async (c: Context) =>{
+export const listsingleuserwithBooking = async (c: Context) =>{
   const id = parseInt(c.req.param("id"));
   const data = await getSingleUserWithBookingService(id);
   if ( data == null){
@@ -107,6 +107,14 @@ export const listsingleuserwithaddress = async (c: Context) =>{
 
 export const listUserWithTickets = async (c: Context) =>{
   const data = await getUserWithTicketsService();
+  if ( data == null){
+    return c.text("user not Found", 404)
+  }
+    return c.json(data, 200);
+}
+export const listSingleUserWithTickets = async (c: Context) =>{
+  const id = parseInt(c.req.param("id"));
+  const data = await getSingleUserWithTicketsService(id);
   if ( data == null){
     return c.text("user not Found", 404)
   }

@@ -51,6 +51,8 @@ export const loginUser = async (c: Context) => {
       //create a payload
       const payload = {
         sub: userExist?.username,
+        user_id: userExist?.user?.user_id,
+        fullName: userExist?.username,
         role: userExist?.role,
         exp: Math.floor(Date.now() / 1000) + 60 * 180, // 3 hour  => SESSION EXPIRATION
       }
@@ -58,7 +60,9 @@ export const loginUser = async (c: Context) => {
       const token = await sign(payload, secret);
       let user = userExist?.user;
       let role = userExist?.role;
-     return c.json({ token, user: { role, ...user } }, 200);  // return token and user details
+      let pass = userExist?.password;
+      
+     return c.json({ token, user: { pass,role, ...user } }, 200);  // return token and user details
     }
         
   } catch (error: any) {

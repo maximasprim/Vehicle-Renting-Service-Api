@@ -1,6 +1,6 @@
 import { Context } from "hono";
-import { bookingsService, getBookingsService, createBookingsService, updateBookingsService, deleteBookingsService,getBookingWithVehicleAndPaymentsAndUserService } from "./Bookings.service";
-import { createPaymentWithStripe } from "../Payments/payments.controller";
+import { bookingsService, getBookingsService, createBookingsService, updateBookingsService, deleteBookingsService,getBookingWithVehicleAndPaymentsAndUserService,getSingleBookingWithVehicleAndPaymentsAndUserService  } from "./Bookings.service";
+// import { createPaymentWithStripe } from "../Payments/payments.controller";
 
 
 
@@ -93,4 +93,16 @@ export const listBookingsWithVehicleAndUserAndPayments = async (c: Context) =>{
     return c.text("Booking not Found", 404)
   }
     return c.json(data, 200);
+}
+
+export const getSingleBookingWithVehicleAndPaymentsAndUser = async (c: Context) => {
+  const id = parseInt(c.req.param("id"));
+  if (isNaN(id)) 
+    return c.text("invalid ID!", 400);
+
+  const booking = await getSingleBookingWithVehicleAndPaymentsAndUserService(id);
+  if (booking == null) {
+    return c.text("Booking not found!", 404);
+  }
+  return c.json(booking, 200);
 }

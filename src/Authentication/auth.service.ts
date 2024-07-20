@@ -45,6 +45,7 @@ export const userloginService = async (user: TSAuthentication) =>{
   const { username, password } = user;
   return await db.query.authenticationTable.findFirst({
     columns:{
+        auth_id: true,
         username: true,
         role: true,
         password: true
@@ -52,6 +53,7 @@ export const userloginService = async (user: TSAuthentication) =>{
     with: {
         user: {
             columns:{
+              user_id: true,
                 full_name: true,
                 contact_phone: true,
                 address: true,
