@@ -15,14 +15,15 @@ import { relations } from "drizzle-orm";
 // Users Table
 export const roleEnum = pgEnum("role", ["user", "admin","both"]);
 export const usersTable = pgTable("users", {
+  // profile_picture: varchar("profile_picture", { length: 512 }),
   user_id: serial("user_id").primaryKey(),
   full_name: varchar("full_name", { length: 256 }).notNull(),
   email: varchar("email", { length: 256 }).unique(),
   contact_phone: varchar("contact_phone", { length: 20 }),
   address: varchar("address", { length: 256 }),
   role: roleEnum("role").default("user"),
-  created_at: timestamp("created_at").notNull().defaultNow(),
-  updated_at: timestamp("updated_at").notNull().defaultNow(),
+  created_at: timestamp("created_at",{ mode: "string"}).notNull().defaultNow(),
+  updated_at: timestamp("updated_at",{ mode: "string"}).notNull().defaultNow(),
 });
 
 // Vehicles Table

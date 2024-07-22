@@ -12,11 +12,11 @@ import { adminRoleAuth, bothRolesAuth, userRoleAuth } from "../middleware/Auth";
 export const locationRouter = new Hono();
 
 //get states
-locationRouter.get("/location",bothRolesAuth, listLocation)
+locationRouter.get("/location", listLocation)
 
 //get a single Driver    
 
-locationRouter.get("/location/:id",userRoleAuth, getSingleLocation)
+locationRouter.get("/location/:id", getSingleLocation)
 
 
 
@@ -26,11 +26,11 @@ locationRouter.post("/location", zValidator('json', locationSchema, (results, c)
   if (!results.success){
       return c.json(results.error, 400)
   }
-}) ,adminRoleAuth,createLocation)
+}) ,createLocation)
 
 //update Driver
 
-locationRouter.put("/location/:id",adminRoleAuth, updateLocation)
+locationRouter.put("/location/:id", updateLocation)
 
 // delete Driver
-locationRouter.delete("/location/:id",adminRoleAuth, deleteLocation)
+locationRouter.delete("/location/:id", deleteLocation)

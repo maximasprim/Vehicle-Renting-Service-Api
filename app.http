@@ -90,7 +90,7 @@ Content-Type: application/json
 
 {
     
-  "rental_rate": 100,
+  "rental_rate": 30,
   "availability": "false"
   
   
@@ -320,4 +320,11 @@ Content-Type: application/json
 ###
 DELETE http://localhost:3000/fleetManagement/1
 ###
-POST http://localhost:3000/send-contact-email
+POST http://localhost:3000/send-email
+Content-Type: application/json
+
+{
+  "email": " michaelmwasame16@gmail.com ",
+  "subject": "Booking issue",
+  "message": "I have a problem with my booking"
+}
